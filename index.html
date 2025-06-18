@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ゾロ目サイコロ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🎲 ゾロ目サイコロ</h1>
+    <div class="top-buttons">
+      <button id="toggle-theme">🌗 テーマ切り替え</button>
+      <button id="go-home">🏠 ホームへ</button>
+    </div>
+  </header>
+
+  <main>
+    <div id="controls">
+      <label for="dice-count">サイコロの数: </label>
+      <select id="dice-count">
+        ${[...Array(9)].map((_, i) => `<option value="${i+2}">${i+2}</option>`).join('')}
+      </select>
+      <br>
+      <button onclick="rollOnce()">1回振る</button>
+      <button onclick="startAutoRoll()">ゾロ目が出るまで振る</button>
+    </div>
+
+    <div id="dice-container"></div>
+    <div id="result-message"></div>
+
+    <h3>履歴（最新順）</h3>
+    <ul id="history-list"></ul>
+  </main>
+
+  <audio id="success-sound" src="success.mp3" preload="auto"></audio>
+  <script src="script.js"></script>
+</body>
+</html>
