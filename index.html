@@ -1,39 +1,36 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ゾロ目サイコロ</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ゾロ目ダイス</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>🎲 ゾロ目サイコロ</h1>
-    <div class="top-buttons">
-      <button id="toggle-theme">🌗 テーマ切り替え</button>
-      <button id="go-home">🏠 ホームへ</button>
-    </div>
+    <h1>🎲 ゾロ目ダイス</h1>
+    <button id="toggle-theme">🌙 / ☀️</button>
+    <button onclick="location.href='index.html'" class="home-button">🏠 ホームに戻る</button>
   </header>
 
   <main>
-    <div id="controls">
-      <label for="dice-count">サイコロの数: </label>
-      <select id="dice-count">
-        ${[...Array(9)].map((_, i) => `<option value="${i+2}">${i+2}</option>`).join('')}
-      </select>
-      <br>
-      <button onclick="rollOnce()">1回振る</button>
-      <button onclick="startAutoRoll()">ゾロ目が出るまで振る</button>
-    </div>
+    <label for="dice-count">サイコロの数：</label>
+    <select id="dice-count">
+      ${[...Array(10)].map((_, i) => `<option value="${i + 1}">${i + 1}個</option>`).join('')}
+    </select>
+    <br />
+    <button onclick="rollOnce()">1回振る</button>
+    <button onclick="startAutoRoll()">ゾロ目出るまで</button>
 
     <div id="dice-container"></div>
-    <div id="result-message"></div>
+    <p id="result-message">出目がここに表示されます</p>
 
-    <h3>履歴（最新順）</h3>
+    <h2>履歴</h2>
     <ul id="history-list"></ul>
+
+    <audio id="success-sound" src="success.mp3" preload="auto"></audio>
   </main>
 
-  <audio id="success-sound" src="success.mp3" preload="auto"></audio>
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
